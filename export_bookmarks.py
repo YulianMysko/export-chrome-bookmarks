@@ -177,7 +177,7 @@ def check_url_status(bookmarks: list) -> list:
         asyncio = None
         aiohttp = None
 
-    if not asyncio and aiohttp:
+    if asyncio and aiohttp:
         
         # Initialize progress bar
         global bkms_count, bkms_checked
@@ -266,15 +266,13 @@ def save_csv(output_file: str, bookmarks: list, write_status: bool):
         writer.writerows(bookmarks)
 
 
-def main():
-    print(license_string)
-
+def parse_input():
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "bookmarks_file",
         nargs="?",
-        default=None,
         help="path to your bookmarks file, can be empty",
+        default=None,
     )
     parser.add_argument(
         "-o",
@@ -287,7 +285,12 @@ def main():
         action="store_true",
         help="additionally check the website status: active/down",
     )
-    args = parser.parse_args()
+    return parser.parse_args()
+
+
+def main():
+    print(license_string)
+    args = parse_input()
 
     # get file location
     if args.bookmarks_file is not None:
