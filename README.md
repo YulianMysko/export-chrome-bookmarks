@@ -19,7 +19,7 @@ python3 export_bookmarks.py -check-status
 python3 export_bookmarks.py ~/Chrome/Default/Bookmarks --output ./my_bookmarks.csv
 ```
 
-To install the [aiohttp](https://docs.aiohttp.org/en/stable/) library run from the terminal:
+(Optional) To install the [aiohttp](https://docs.aiohttp.org/en/stable/) library run from the terminal:
 ```
 pip3 install aiohttp
 ```
